@@ -1,0 +1,7 @@
+# README
+
+fork https://github.com/chenshuo/recipes
+
+受到启发，将代码碎片存放到一个仓库中，通过 hugo 搭建的博客系统可以引入链接，代码改动不会影响博客中代码显示，实时变化。还不会重复引入代码副本。
+
+[寒江雪的博客](https://cold-rivers-snow.github.io/)
