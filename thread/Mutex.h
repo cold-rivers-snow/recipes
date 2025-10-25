@@ -17,7 +17,7 @@
 namespace muduo
 {
 
-class MutexLock : boost::noncopyable
+class MutexLock : boost::noncopyable  // C++ linux 端封装 mutex
 {
  public:
   MutexLock()
@@ -67,7 +67,7 @@ class MutexLock : boost::noncopyable
   pid_t holder_;
 };
 
-class MutexLockGuard : boost::noncopyable
+class MutexLockGuard : boost::noncopyable   //RAII 技术
 {
  public:
   explicit MutexLockGuard(MutexLock& mutex) : mutex_(mutex)

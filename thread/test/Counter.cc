@@ -22,7 +22,7 @@ class Counter : boost::noncopyable
 
 int64_t Counter::value() const
 {
-  MutexLockGuard lock(mutex_);
+  MutexLockGuard lock(mutex_); //mutex_ 是 mutable ，所以也可以直接使用 non-const 的mutex_
   return value_;
 }
 
