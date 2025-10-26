@@ -144,7 +144,7 @@ class StockFactory : public boost::enable_shared_from_this<StockFactory>,
     {
       pStock.reset(new Stock(key),
                    boost::bind(&StockFactory::deleteStock,
-                               shared_from_this(),
+                               shared_from_this(),  // shared_ptr<StockFactory>
                                _1));
       wkStock = pStock;
     }
@@ -184,7 +184,7 @@ class StockFactory : public boost::enable_shared_from_this<StockFactory>,
       pStock.reset(new Stock(key),
                    boost::bind(&StockFactory::weakDeleteCallback,
                                boost::weak_ptr<StockFactory>(shared_from_this()),
-                               _1));
+                               _1)); //必须显示将 shared_from_this() 转换为 weak_ptr 类型，bind 拷贝的是实参类型，不是形参类型，只负责拷贝实参本身（无论其类型是否与函数形参匹配），因此实参必须是可拷贝的（或可移动的）
       wkStock = pStock;
     }
     return pStock;
