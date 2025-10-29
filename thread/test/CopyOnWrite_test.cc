@@ -23,10 +23,10 @@ void post(const Foo& f)
   MutexLockGuard lock(mutex);
   if (!g_foos.unique())
   {
-    g_foos.reset(new FooList(*g_foos));
+    g_foos.reset(new FooList(*g_foos)); //复制当前容器内容创建新容器，再让共享指针指向新容器
     printf("copy the whole list\n");
   }
-  assert(g_foos.unique());
+  assert(g_foos.unique()); //新的为 1 写入数据。另一份通过 shared_ptr 自动管理生命周期释放。
   g_foos->push_back(f);
 }
 
@@ -34,7 +34,7 @@ void traverse()
 {
   FooListPtr foos;
   {
-    MutexLockGuard lock(mutex);
+    MutexLockGuard lock(mutex); //多线程读写 shared_ptr ,必须用 mutex 保护
     foos = g_foos;
     assert(!g_foos.unique());
   }

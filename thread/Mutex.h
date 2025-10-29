@@ -92,4 +92,8 @@ class MutexLockGuard : boost::noncopyable   //RAII 技术
 // A tempory object doesn't hold the lock for long!
 #define MutexLockGuard(x) error "Missing guard object name"
 
+//#define MutexLockGuard(x) static_assert(false, "Missing guard object name") //书中用得断言方式
+
+//这样写成宏，只要这样写就会报错，必须 MutexLockGuard  lock(mutex); 定义，不能匿名定义
+
 #endif  // MUDUO_BASE_MUTEX_H
