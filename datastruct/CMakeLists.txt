@@ -13,6 +13,8 @@ add_executable(array array.cpp)
 add_executable(cycle_array cycle_array.cpp)
 add_executable(list list.cpp)
 add_executable(double_list double_list.cpp)
+add_executable(array_hash array_hash.cpp)
+add_executable(bst bst.cpp)
 
 # 为每个目标添加编译选项
 target_compile_options(array PRIVATE 
@@ -34,3 +36,14 @@ target_compile_options(double_list PRIVATE
     -Wall          # 启用所有警告
     -O2            # 优化级别2
 )
+# 为每个目标添加编译选项
+target_compile_options(array_hash PRIVATE 
+    -Wall          # 启用所有警告
+    -O2            # 优化级别2
+)
+# 为每个目标添加编译选项
+target_compile_options(bst PRIVATE 
+    -Wall          # 启用所有警告
+    -O2            # 优化级别2
+)
+
