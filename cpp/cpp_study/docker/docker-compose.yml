@@ -1,0 +1,24 @@
+# chrono 2021-03
+#
+# docker-compose run --rm cpp_study
+#
+# docker ps
+# docker exec -it xxx bash
+
+version: "3"
+
+services:
+
+  cpp_study:
+
+    image: chronolaw/cpp_study
+
+    container_name: cpp_study
+
+    working_dir: /root/cpp_study
+
+    stdin_open: true
+    tty: true
+
+    command: /bin/bash
+
