@@ -21,6 +21,7 @@ add_executable(vector_stack vector_stack.cpp)
 add_executable(circle_array_queue circle_array_queue.cpp)
 add_executable(list_deque list_deque.cpp)
 add_executable(circle_array_deque circle_array_deque.cpp)
+add_executable(list_hash list_hash.cpp)
 
 # 为每个目标添加编译选项
 target_compile_options(array PRIVATE 
@@ -79,6 +80,11 @@ target_compile_options(list_deque PRIVATE
 )
 # 为每个目标添加编译选项
 target_compile_options(circle_array_deque PRIVATE 
+    -Wall          # 启用所有警告
+    -O2            # 优化级别2
+)
+# 为每个目标添加编译选项
+target_compile_options(list_hash PRIVATE 
     -Wall          # 启用所有警告
     -O2            # 优化级别2
 )
