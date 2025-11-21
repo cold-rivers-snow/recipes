@@ -1,6 +1,0 @@
-[submodule "cpp_study"]
-	path = cpp_study
-	url = https://github.com/cold-rivers-snow/cpp_study.git
-[submodule "interview"]
-	path = interview
-	url = https://ghfast.top/https://github.com/cold-rivers-snow/interview.git
