@@ -1,13 +1,12 @@
 #include <vector>
 #include <iostream>
 
-// 定义链表节点结构
+// 链表节点结构
 struct Node {
     int key;
     int value;
     Node* next;
 
-    // 构造函数
     Node(int k, int v) : key(k), value(v), next(nullptr) {}
 };
 
@@ -18,16 +17,14 @@ private:
     // 固定容量，可以根据需要调整
     static const int CAPACITY = 10000;
 
-    // 哈希函数：取模
     int hash(int key) {
         return key % CAPACITY;
     }
 
 public:
-    // 构造函数：初始化桶数组，所有指针置为 nullptr
     MyHashMap() : table(CAPACITY, nullptr) {}
 
-    // 析构函数：释放所有动态分配的内存，防止内存泄漏
+    // 释放所有动态分配的内存，防止内存泄漏
     ~MyHashMap() {
         for (Node* bucketHead : table) {
             Node* current = bucketHead;
@@ -41,7 +38,7 @@ public:
 
     // 插入或更新键值对
     void put(int key, int value) {
-        int idx = hash(key); // 计算桶索引
+        int idx = hash(key); 
 
         // 1. 遍历链表，检查 key 是否已存在
         Node* current = table[idx];
@@ -53,13 +50,12 @@ public:
             current = current->next;
         }
 
-        // 2. key 不存在，创建新节点并插入到链表头部
+        // 2. key 不存在，创建新节点并插入到链表头部（头插法）
         Node* newNode = new Node(key, value);
         newNode->next = table[idx]; // 新节点的 next 指向原链表头
         table[idx] = newNode;       // 桶指向新节点
     }
 
-    // 根据 key 获取 value
     int get(int key) {
         int idx = hash(key);
         Node* current = table[idx];
@@ -75,7 +71,6 @@ public:
         return -1; // 未找到
     }
 
-    // 删除键值对
     void remove(int key) {
         int idx = hash(key);
         Node* head = table[idx];
@@ -95,7 +90,7 @@ public:
         while (prev->next != nullptr) {
             if (prev->next->key == key) {
                 Node* toDelete = prev->next;
-                prev->next = toDelete->next; // 跳过目标节点
+                prev->next = toDelete->next; // 跳过目标节点，不能之间next->next,赋值，需要释放内存
                 delete toDelete;
                 return;
             }
