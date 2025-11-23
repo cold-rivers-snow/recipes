@@ -25,6 +25,11 @@ add_executable(list_hash list_hash.cpp)
 add_executable(my_hash_set hash_set_main.cpp)
 add_executable(list_hash_map_set list_hash_map_set_main.cpp)
 add_executable(bloom_filter_main bloom_filter_main.cpp)
+add_executable(simple_priority_queue simple_priority_queue.cpp)
+add_executable(priority_queue priority_queue.cpp)
+add_executable(segment_tree segment_tree.cpp)
+add_executable(max_segment_tree max_segment_tree.cpp)
+add_executable(huffman_coding huffman_coding.cpp)
 
 # 为每个目标添加编译选项
 target_compile_options(array PRIVATE 
@@ -103,6 +108,26 @@ target_compile_options(list_hash_map_set PRIVATE
 )
 # 为每个目标添加编译选项
 target_compile_options(bloom_filter_main PRIVATE 
+    -Wall          # 启用所有警告
+    -O2            # 优化级别2
+)
+target_compile_options(simple_priority_queue PRIVATE 
+    -Wall          # 启用所有警告
+    -O2            # 优化级别2
+)
+target_compile_options(priority_queue PRIVATE 
+    -Wall          # 启用所有警告
+    -O2            # 优化级别2
+)
+target_compile_options(segment_tree PRIVATE 
+    -Wall          # 启用所有警告
+    -O2            # 优化级别2
+)
+target_compile_options(max_segment_tree PRIVATE 
+    -Wall          # 启用所有警告
+    -O2            # 优化级别2
+)
+target_compile_options(huffman_coding PRIVATE 
     -Wall          # 启用所有警告
     -O2            # 优化级别2
 )
