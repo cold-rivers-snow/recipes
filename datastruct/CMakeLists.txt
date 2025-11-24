@@ -30,6 +30,7 @@ add_executable(priority_queue priority_queue.cpp)
 add_executable(segment_tree segment_tree.cpp)
 add_executable(max_segment_tree max_segment_tree.cpp)
 add_executable(huffman_coding huffman_coding.cpp)
+add_executable(hierholzer hierholzer.cpp)
 
 # 为每个目标添加编译选项
 target_compile_options(array PRIVATE 
@@ -128,6 +129,10 @@ target_compile_options(max_segment_tree PRIVATE
     -O2            # 优化级别2
 )
 target_compile_options(huffman_coding PRIVATE 
+    -Wall          # 启用所有警告
+    -O2            # 优化级别2
+)
+target_compile_options(hierholzer PRIVATE 
     -Wall          # 启用所有警告
     -O2            # 优化级别2
 )
