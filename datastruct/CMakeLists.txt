@@ -32,6 +32,7 @@ add_executable(max_segment_tree max_segment_tree.cpp)
 add_executable(huffman_coding huffman_coding.cpp)
 add_executable(hierholzer hierholzer.cpp)
 add_executable(floyd floyd.cpp)
+add_executable(sort_main sort_main.cpp)
 
 # 为每个目标添加编译选项
 target_compile_options(array PRIVATE 
@@ -138,6 +139,10 @@ target_compile_options(hierholzer PRIVATE
     -O2            # 优化级别2
 )
 target_compile_options(floyd PRIVATE 
+    -Wall          # 启用所有警告
+    -O2            # 优化级别2
+)
+target_compile_options(sort_main PRIVATE 
     -Wall          # 启用所有警告
     -O2            # 优化级别2
 )
