@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/list_stack.dir/list_stack.cpp.o -o list_stack 
