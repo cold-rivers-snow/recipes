@@ -85,3 +85,39 @@ int main()
 
     return 0;
 }
+
+//hjx code
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* partition(ListNode* head, int x) {
+        ListNode* less = new ListNode();
+        ListNode* great = new ListNode();
+        ListNode* cur = head;
+        ListNode* less_cur = less;
+        ListNode* great_cur = great;
+        while(cur) {
+            if (cur->val < x) {
+                less_cur->next = cur;
+                less_cur = less_cur->next;
+            } else {
+                great_cur->next = cur;
+                great_cur = great_cur->next;
+            }
+            ListNode* temp = cur->next;  //注意这三行，断开与原链表的连接
+            cur->next = nullptr;
+            cur = temp;
+        }
+        less_cur->next = great->next;
+        return less->next;
+    }
+};
