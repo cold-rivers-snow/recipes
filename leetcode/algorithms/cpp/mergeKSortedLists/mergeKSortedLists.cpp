@@ -185,3 +185,43 @@ int main(int argc, char**argv)
     cout << "method " << n+1 << endl;
     return 0;
 }
+
+//hjx code
+
+//采用优先级队列，最小堆排序
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* mergeKLists(vector<ListNode*>& lists) {
+        if (lists.empty())
+            return nullptr;
+        ListNode* head = new ListNode();
+        ListNode* cur = head;
+        auto cmp = [](ListNode* a, ListNode* b) { return a->val > b->val; };
+        std::priority_queue<ListNode*, vector<ListNode*>, decltype(cmp)> pq(cmp);
+        for (auto item : lists) {
+            if (item) {
+                pq.push(item);
+            }
+        }
+        while(!pq.empty()) {
+            ListNode* node = pq.top();
+            pq.pop();
+            cur->next = node;
+            if (node->next) {
+                pq.push(node->next);
+            }
+            cur = cur->next;
+        }
+        return head->next;
+    }
+};

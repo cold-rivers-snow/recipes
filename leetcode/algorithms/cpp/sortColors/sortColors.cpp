@@ -74,3 +74,20 @@ int main(int argc, char** argv)
     delete[] a;
 }
 
+//hjx code
+
+class Solution {
+public:
+    void sortColors(vector<int>& nums) {
+        std::vector<int> item(3, 0);
+        for (auto& index : nums) {
+            item[index]++;
+        }
+        int j = 0;
+        for (int i = 0; i < 3;i++) {
+            for (int k = 0;k < item[i]; k++) {
+                nums[j++] = i;
+            }
+        }
+    }
+};
