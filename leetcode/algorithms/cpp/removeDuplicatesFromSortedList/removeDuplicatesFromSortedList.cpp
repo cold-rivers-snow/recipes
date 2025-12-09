@@ -67,3 +67,24 @@ int main()
     return 0;
 }
 
+//hjx code
+//同removeDuplicatesFromSortedArray（26题），一个数组，一个链表，都是通过快指针找到不同的
+class Solution {
+public:
+    ListNode* deleteDuplicates(ListNode* head) {
+        if (!head) {
+            return nullptr;
+        }
+        ListNode* slow = head;
+        ListNode* fast = head;
+        while(fast) {
+            if (fast->val != slow->val) {
+                slow->next = fast;
+                slow = slow->next;
+            }
+            fast = fast->next;
+        }
+        slow->next = nullptr;
+        return head;
+    }
+};

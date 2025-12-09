@@ -5,6 +5,8 @@
     "terminal.integrated.fontSize": 16,
     "markdown.preview.fontSize": 16,
     "editor.formatOnSave": true,
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.wordWrapColumn": 80,
     "[cpp]": {
         "editor.defaultFormatter": "ms-vscode.cpptools"
     }

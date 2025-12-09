@@ -1,0 +1,15 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug with GDB",
+            "type": "gdb",
+            "request": "launch",
+            "target": "${fileDirname}/build/${fileBasenameNoExtension}",
+            "cwd": "${fileDirname}",
+            "gdbpath": "/usr/bin/gdb",
+            "preLaunchTask": "build active file",
+            "valuesFormatting": "parseText"
+        }
+    ]
+}

@@ -68,3 +68,36 @@ public:
         return p1;
     }
 };
+
+//hjx code 快慢指针， 快的每次走两步， 慢的每次走一步， 如果有环， 快的和慢的一定会相遇
+//相遇后， 将快的指针重新指向头节点， 慢的指针保持不变， 然后快的指针每次走一步， 慢的指针每次走一步， 当快的指针和慢的指针相遇时， 就是环的入口
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode *detectCycle(ListNode *head) {
+        ListNode* fast = head;
+        ListNode* slow = head;
+        while(fast && fast->next) {
+            fast = fast->next->next;
+            slow = slow->next;
+            if (slow == fast)
+                break;
+        }
+        if (!fast || !fast->next) {
+            return nullptr;
+        }
+        slow = head;
+        while(slow != fast) {
+            fast = fast->next;
+            slow = slow->next;
+        }
+        return slow;
+    }
+};

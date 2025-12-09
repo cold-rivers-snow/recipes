@@ -6,4 +6,3 @@ profile*.pb.gz
 core
 datastruct/build/*
 .idea/*
-.vscode/*
