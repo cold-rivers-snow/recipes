@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/vector_stack.dir/vector_stack.cpp.o -o vector_stack 

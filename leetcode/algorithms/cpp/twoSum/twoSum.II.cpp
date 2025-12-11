@@ -38,3 +38,25 @@ public:
         return result;
     }
 };
+
+//hjx code
+//由于是升序的，所以可以使用双指针，一个指针从左到右，一个指针从右到左，相互夹击，找到正确的索引。
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& numbers, int target) {
+        vector<int> ans;
+        int left = 0, right = numbers.size() - 1;
+        while(left < right) {
+            if (numbers[left] + numbers[right] == target) {
+                ans.push_back(left + 1);
+                ans.push_back(right + 1);
+                break;
+            } else if (numbers[left] + numbers[right] > target) {
+                right--;
+            } else if (numbers[left] + numbers[right] < target) {
+                left++;
+            }
+        }
+        return ans;
+    }
+};

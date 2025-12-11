@@ -197,3 +197,80 @@ int main(int argc, char**argv)
 
     return 0;
 }
+
+//hjx code
+//中心扩展法，双指针从中间往两边扩散，同时区分奇偶数
+class Solution {
+public:
+    string longestPalindrome(string s) {
+        string res = "";
+        for (int i = 0; i < s.length(); i++) {
+            string s1 = parindrome(s, i, i); //奇数
+            string s2 = parindrome(s, i, i+1);//偶数
+            res = res.length() > s1.length() ? res : s1;
+            res = res.length() > s2.length() ? res : s2;
+        }
+        return res;
+    }
+    string parindrome(string s, int l, int r) {
+        while(l >= 0 && r <= s.length() && s[l] == s[r]) {
+            l--;
+            r++;
+        }
+        return s.substr(l + 1, r - l - 1);
+    }
+};
+
+//动态规划方式解决，如果一个字符串的前后两个相等，是否是回文子串就要看中间字符串是否是回文
+/*
+i代表字符串的起始位置
+j代表字符串的结束位置
+i 不能大于 j
+如果字符串长度为1，一定是回文，所以对角线一定为true，
+由于i < j,所以，只需要填写上三角部分，所以遍历的时候，先遍历的列，后遍历的行。行小于列
+0 1 2 3 4 5 6 7 8 9
+1 T   T   T   T   T
+2   T   T   T   T  
+3     T   T   T   T 
+4       T   T   T   
+5         T   T   T
+6           T   T  
+7             T
+8               T
+9                 T
+
+*/
+class Solution {
+public:
+    string longestPalindrome(string s) {
+        int n = s.length();
+        if (n < 2) {
+            return s;
+        }
+        int maxLen = 1;
+        int begin = 0;
+        vector<vector<int>> dp(n, vector<int>(n));
+        //init
+        for (int i = 0; i < n; i++) {
+            dp[i][i] = true;
+        }
+        for (int j = 1; j < n; j++) {
+            for (int i = 0; i < j; i++) {
+                if (s[i] != s[j]) {
+                    dp[i][j] = false;
+                } else {
+                    if (j - i < 3) {
+                        dp[i][j] = true;
+                    } else {
+                        dp[i][j] = dp[i + 1][j - 1];
+                    }
+                }
+                if (dp[i][j] && j - i + 1 > maxLen) {
+                    maxLen = j - i + 1;
+                    begin = i;
+                }
+            }
+        }
+        return s.substr(begin, maxLen);
+    }
+};

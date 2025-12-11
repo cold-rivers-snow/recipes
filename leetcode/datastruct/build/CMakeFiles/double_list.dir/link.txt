@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/double_list.dir/double_list.cpp.o -o double_list 

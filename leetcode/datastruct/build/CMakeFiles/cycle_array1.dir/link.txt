@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/cycle_array1.dir/cycle_array1.cpp.o -o cycle_array1 

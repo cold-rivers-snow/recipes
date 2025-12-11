@@ -22,3 +22,19 @@ public:
         return s;
     }
 };
+
+//hjx code
+//双指针,一个指针从左到右,一个指针从右到左,相互夹击,互相交换。
+class Solution {
+public:
+    void reverseString(vector<char>& s) {
+        int left = 0, right = s.size() - 1;
+        while(left < right) {
+            char tmp = s[left];
+            s[left] = s[right];
+            s[right] = tmp;
+            left++;
+            right--;
+        }
+    }
+};
