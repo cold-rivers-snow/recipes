@@ -78,3 +78,25 @@ int main(int argc, char** argv)
 
     return 0;
 }
+
+//hjx code
+//滑动窗口，窗口内字符个数不能超过1
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        unordered_map<char, int> window;
+        int left = 0, right = 0, len = 0;
+        while(left <= right && right < s.length()) {
+            char c = s[right];
+            window[c]++;
+            right++;
+            while(window[c] > 1) {
+                char c = s[left];
+                window[c]--;
+                left++;
+            }
+            len = max(len, right - left);
+        }
+        return len;
+    }
+};

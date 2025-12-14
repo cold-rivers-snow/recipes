@@ -29,3 +29,6 @@ public:
         return diameter;
     }
 };
+
+//hjx code
+//同上，最大直径，转化为左右子树的深度相加。

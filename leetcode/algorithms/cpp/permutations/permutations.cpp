@@ -110,3 +110,33 @@ int main(int argc, char** argv)
 
     return 0;
 }
+
+//hjx code 
+//回溯法，全排列，遍历决策树（多叉树的遍历）。
+class Solution {
+public:
+    vector<vector<int>> res;
+    vector<vector<int>> permute(vector<int>& nums) {
+        list<int> tracks;
+        vector<bool> used(nums.size(), false);
+        backtracks(tracks, used, nums);
+        return res;
+    }
+    void backtracks(list<int>& tracks, vector<bool>& used, vector<int>& nums) {
+        if (tracks.size() == nums.size()) {
+            res.push_back(std::vector<int>(tracks.begin(), tracks.end()));
+            return;
+        }
+        for (int i = 0; i < nums.size(); i++) {
+            if (used[i]) {
+                continue;
+            }
+            tracks.push_back(nums[i]);
+            used[i] = true;
+            backtracks(tracks, used, nums);
+            tracks.pop_back();
+            used[i] = false;
+        }
+        return;
+    }
+};

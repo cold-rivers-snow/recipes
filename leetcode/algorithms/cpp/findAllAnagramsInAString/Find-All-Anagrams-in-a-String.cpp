@@ -58,3 +58,40 @@ public:
         return result;
     }
 };
+
+//hjx code
+//正常参考滑动窗口的框架，思考排序的一定子串长度和p的长度相等，left即为其下标开始。
+class Solution {
+public:
+    vector<int> findAnagrams(string s, string p) {
+        unordered_map<char, int> need, window;
+        for (char c : p) {
+            need[c]++;
+        }
+        int left = 0, right = 0, len = INT_MAX, vaild = 0;
+        vector<int> start_index;
+        while(right < s.length()) {
+            char c = s[right];
+            right++;
+            if (need.count(c)) {
+                window[c]++;
+                if (window[c] == need[c]) {
+                    vaild++;
+                }
+            }
+            while(vaild == need.size()) {
+                if (right - left == p.length())
+                    start_index.push_back(left);
+                char c = s[left];
+                if (need.count(c)) {
+                    if (window[c] == need[c]) {
+                        vaild--;
+                    }
+                    window[c]--;
+                }
+                left++;
+            }
+        }
+        return start_index;
+    }
+};

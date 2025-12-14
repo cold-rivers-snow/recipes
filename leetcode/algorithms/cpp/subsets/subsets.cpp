@@ -166,3 +166,24 @@ int main(int argc, char** argv)
     vector<vector<int> > r = subsets(v);
     printResult(r);
 }
+
+//hjx code
+//回溯法，遍历每个节点，start 控制每个节点的遍历起始位置，
+class Solution {
+public:
+    vector<vector<int>> subsets(vector<int>& nums) {
+        vector<vector<int>> res;
+        list<int> tracks;
+        backtracks(res, tracks, nums, 0);
+        return res;
+    }
+    void backtracks(vector<vector<int>>& res, list<int>& tracks, vector<int>& nums, int start) {
+        res.push_back(vector<int>(tracks.begin(), tracks.end()));
+        for (int i = start; i < nums.size(); i++) {
+            tracks.push_back(nums[i]);
+            backtracks(res, tracks, nums, i+1);
+            tracks.pop_back();
+        }
+        return;
+    }
+};

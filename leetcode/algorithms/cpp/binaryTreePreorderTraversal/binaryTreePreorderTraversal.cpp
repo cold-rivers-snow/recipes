@@ -147,3 +147,38 @@ int main()
     return 0;
 }
 
+//hjx code
+//递归前序遍历，先push节点，再递归左子树，再递归右子树
+class Solution {
+public:
+    vector<int> preorderTraversal(TreeNode* root) {
+        vector<int> res;
+        traverse(root, res);
+        return res;
+    }
+    void traverse(TreeNode* root, vector<int>& res) {
+        if (!root) {
+            return;
+        }
+        res.push_back(root->val);
+        traverse(root->left, res);
+        traverse(root->right, res);
+    }
+};
+
+//分解问题：前序遍历就算先push当前节点，再递归左子树，插入左子树遍历的结果，再递归右子树，插入右子树遍历的结果
+
+class Solution {
+public:
+    vector<int> preorderTraversal(TreeNode* root) {
+        vector<int> res;
+        if (!root)
+            return res;
+        res.push_back(root->val);
+        auto left_res = preorderTraversal(root->left);
+        auto right_res = preorderTraversal(root->right);
+        res.insert(res.end(), left_res.begin(), left_res.end());
+        res.insert(res.end(), right_res.begin(), right_res.end());
+        return res;
+    }
+};

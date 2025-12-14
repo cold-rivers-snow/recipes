@@ -200,7 +200,9 @@ LeetCode
 |820|[Short Encoding of Words](https://leetcode.com/problems/short-encoding-of-words/) | [C++](./algorithms/cpp/shortEncodingOfWords/ShortEncodingOfWords.cpp)|Medium|
 |804|[Unique Morse Code Words](https://leetcode.com/problems/unique-morse-code-words/description/) | [C++](./algorithms/cpp/uniqueMorseCodeWords/UniqueMorseCodeWords.cpp)|Easy|
 |776|[Swim In Rising Water](https://leetcode.com/problems/swim-in-rising-water/description/) | [Python](./algorithms/python/SwimInRisingWater/swim_in_rising_water.py)|Hard|
+|773|[Sliding Puzzle](https://leetcode.com/problems/jewels-and-stones/description) | [C++](./algorithms/cpp/slidingPuzzle/slidingPuzzle.cpp)|Hard|
 |771|[Jewels and Stones](https://leetcode.com/problems/jewels-and-stones/description) | [C++](./algorithms/cpp/jewelsAndStones/JewelsAndStones.cpp)|Easy|
+|752|[Open the Lock](https://leetcode.cn/problems/open-the-lock/description/) | [C++](./algorithms/cpp/openTheLock/openTheLock.cpp)|Medium|
 |747|[Largest Number At Least Twice of Others](https://leetcode.com/problems/largest-number-at-least-twice-of-others/) | [Python](./algorithms/python/LargestNumberAtLeastTwiceOfOthers/dominantIndex.py)|Easy|
 |746|[Min Cost Climbing Stairs](https://leetcode.com/problems/min-cost-climbing-stairs/) | [C++](./algorithms/cpp/minCostClimbingStairs/MinCostClimbingStairs.cpp), [Python](./algorithms/python/MinCostClimbingStairs/minCostClimbingStairs.py)|Easy|
 |721|[Accounts Merge](https://leetcode.com/problems/accounts-merge/) | [C++](./algorithms/cpp/accountsMerge/AccountsMerge.cpp)|Medium|
@@ -225,6 +227,7 @@ LeetCode
 |623|[Add One Row to Tree](https://leetcode.com/problems/add-one-row-to-tree/) | [Python](./algorithms/python/AddOneRowToTree/addOneRow.py)|Medium|
 |581|[Shortest Unsorted Continuous Subarray](https://leetcode.com/problems/shortest-unsorted-continuous-subarray/) | [Python](./algorithms/python/ShortestUnsortedContinuousSubarray/findUnsortedSubarray.py)|Easy|
 |572|[Subtree of Another Tree](https://leetcode.com/problems/subtree-of-another-tree/) | [Python](./algorithms/python/SubtreeOfAnotherTree/isSubtree.py)|Easy|
+|567|[Permutation In String](https://leetcode.cn/problems/permutation-in-string/) | [C++](./algorithms/cpp/permutationInString/permutationInString.cpp)|Easy|
 |563|[Binary Tree Tilt](https://leetcode.com/problems/binary-tree-tilt/) | [Python](./algorithms/python/BinaryTreeTilt/findTilt.py)|Easy|
 |547|[Friend Circles](https://leetcode.com/problems/friend-circles/) | [C++](./algorithms/cpp/friendCircles/FriendCircles.cpp)|Medium|
 |543|[Diameter of Binary Tree](https://leetcode.com/problems/diameter-of-binary-tree/) | [C++](./algorithms/cpp/diameterOfBinaryTree/diameterOfBinaryTree.cpp), [Python](./algorithms/python/DiameterOfBinaryTree/diameterOfBinaryTree.py)|Easy|

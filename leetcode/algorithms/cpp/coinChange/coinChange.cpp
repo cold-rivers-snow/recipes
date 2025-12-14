@@ -101,3 +101,69 @@ public:
         return dp[amount]==MAX ? -1 : dp[amount];
     }
 };
+
+//hjx code
+//自顶向下
+//目标是amount，coins中的面值是固定不变的，可无限使用的，amount是可变的，如果为负数,则为面值不存在，如果amount是0,则为0,如果是1,则为1个1coin的面值。那就是说amount的面值个数，就是 amount-1 的面值的最少值，以此类推。
+class Solution {
+public:
+    int coinChange(vector<int>& coins, int amount) {
+        if (amount < 0)
+            return -1;
+        if (amount == 0) 
+            return 0;
+        int res = INT_MAX;
+        for (auto c : coins) {
+            int sub_c = coinChange(coins, amount - c);
+            if (sub_c == -1)
+                continue;
+            res = min(res, sub_c + 1);
+        }
+        return res == INT_MAX ? -1 : res;
+    }
+};
+
+//但是这样多次相同的值会多次递归计算，容易超时，过不了 leetcode, 那就剪枝，带备忘录的数组来存便利过的值。
+
+class Solution {
+public:
+    int coinChange(vector<int>& coins, int amount) {
+        vector<int> dp(amount+1, INT_MAX);
+        return depth(coins, amount, dp);
+    }
+    int depth(vector<int>& coins, int amount, vector<int>& dp) {
+        if (amount < 0)
+            return -1;
+        if (amount == 0) 
+            return 0;
+        if (dp[amount] != INT_MAX)
+            return dp[amount];
+        int res = INT_MAX;
+        for (auto c : coins) {
+            int sub_c = depth(coins, amount - c, dp);
+            if (sub_c == -1)
+                continue;
+            res = min(res, sub_c + 1);
+        }
+        dp[amount] = res == INT_MAX ? -1 : res;
+        return dp[amount];
+    }
+};
+
+//自底向上思考，定义dp table, i 代表amount，dp[i] 代表amount=i时的最少硬币数，dp[i] = min(dp[i], dp[i-c] + 1); dp 的初始化不能为 INT_MAX，因为dp[i-c]+1 ,如果 dp[i-c] == INI_MAX，则超限。最后返回要判断dp[amount]是否为初始值，是则返回-1，否则返回dp[amount]。
+
+class Solution {
+public:
+    int coinChange(vector<int>& coins, int amount) {
+        vector<int> dp(amount+1, amount+1);
+        dp[0] = 0;
+        for (int i = 1; i <= amount; i++) {
+            for (auto c : coins) {
+                if (i - c < 0)
+                    continue;
+                dp[i] = min(dp[i], dp[i-c] + 1);
+            }
+        }
+        return dp[amount] == amount + 1 ? -1 : dp[amount];
+    }
+};

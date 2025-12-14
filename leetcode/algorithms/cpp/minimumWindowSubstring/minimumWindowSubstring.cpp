@@ -120,3 +120,42 @@ int main(int argc, char**argv)
     return 0;
 }
 
+//hjx code
+//通过 map 记录子串中字符的个数，以及字符。如果字符的个数相等，说明子串中包含子串
+//通过快慢指针构成的一个滑动窗口，来判断是否包含子串
+//同时滑动窗口[left, right) 左闭右开区间
+class Solution {
+public:
+    string minWindow(string s, string t) {
+        unordered_map<char, int> need, window;
+        for (auto c : t) {
+            need[c]++;
+        }
+        int left = 0, right = 0, len = INT_MAX, vaild = 0, start = 0;
+        while(right < s.length()) {
+            char c = s[right];
+            right++;
+            if (need.count(c)) {
+                window[c]++;
+                if (window[c] == need[c]) {
+                    vaild++;
+                }
+            }
+            while(vaild == need.size()) {
+                if (right - left < len) {
+                    start = left;
+                    len = right - left;
+                }
+                char c = s[left];
+                if (need.count(c)) {
+                    if (window[c] == need[c]) {
+                        vaild--;
+                    }
+                    window[c]--;
+                }
+                left++;
+            }
+        }
+        return len == INT_MAX ? "" : s.substr(start, len);
+    }
+};
