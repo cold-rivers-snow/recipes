@@ -98,3 +98,37 @@ int main(int argc, char** argv)
 
     return 0;
 }
+
+//hjx code
+//回溯法，全排列问题，遍历决策树（多叉树的遍历）。全排列用used 标记是否使用过，子集、组合使用start往下查找。这个题目有重复的数字，所以会出现相同的排列，先排序，保证相同元素在一起，然后遍历时跳过重复元素，同时是上一层没有使用过的。
+class Solution {
+public:
+    vector<vector<int>> permuteUnique(vector<int>& nums) {
+        vector<vector<int>> res;
+        vector<int> tracks;
+        vector<bool> used(nums.size(), false);
+        sort(nums.begin(), nums.end());
+        backtracks(res, tracks, nums, used);
+        return res;
+    }
+    void backtracks(vector<vector<int>>& res, vector<int>& tracks, vector<int>& nums, vector<bool>& used) {
+        if (tracks.size() == nums.size()) { 
+            res.push_back(tracks);
+            return;
+        }
+        for (int i = 0; i < nums.size(); i++) {
+            // 剪枝1：如果元素已经被使用，则跳过
+            if (used[i]) 
+                continue;
+            // 剪枝2：如果当前元素与前一个元素相同，且前一个元素未被使用（在同一层），则跳过
+            if (i > 0 && nums[i] == nums[i - 1] && !used[i-1])
+                continue;
+            tracks.push_back(nums[i]);
+            used[i] = true;
+            backtracks(res, tracks, nums, used);
+            tracks.pop_back();
+            used[i] = false;
+        }
+        return;
+    }
+};

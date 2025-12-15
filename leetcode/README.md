@@ -570,6 +570,12 @@ LeetCode
 |2|[Add Two Numbers](https://leetcode.com/problems/add-two-numbers/)| [C++](./algorithms/cpp/addTwoNumbers/addTwoNumbers.cpp)|Medium|
 |1|[Two Sum](https://leetcode.com/problems/two-sum/)| [C](./algorithms/c/twoSum/twoSum.c), [C++](./algorithms/cpp/twoSum/twoSum.cpp), [Go](./algorithms/golang/twoSum/twoSum.go), [Python](./algorithms/python/twoSum/twoSum.py)|Easy|
 
+### 面试题
+
+| # | Title | Solution | Difficulty |
+|---| ----- | -------- | ---------- |
+|08|[Permutation Ii Lcci](https://leetcode.cn/problems/permutation-ii-lcci/)| [C++](./interview/cpp/permutationIiLcci/permutationIiLcci.cpp)|Medium|
+
 ### LeetCode Shell
 
 

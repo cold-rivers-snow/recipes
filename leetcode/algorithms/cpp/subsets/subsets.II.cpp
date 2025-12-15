@@ -121,3 +121,29 @@ int main(int argc, char** argv)
     printResult(r);
     cout << "====================" <<endl;
 }
+
+//hjx code
+//回溯法，子集问题，遍历决策树（多叉树的遍历）。根据之前全排列的方式回溯，会出现重复的数组，先排序，保证相同的元素在一起，在回溯时，跳过相同的元素，i>start,保证此次循环不重复。
+class Solution {
+public:
+    vector<vector<int>> subsetsWithDup(vector<int>& nums) {
+        vector<vector<int>> res;
+        vector<int> tracks;
+        sort(nums.begin(), nums.end());
+        backtracks(res, tracks, nums, 0);
+        return res;
+    }
+    void backtracks(vector<vector<int>>& res, vector<int>& tracks, vector<int>& nums, int start) {
+        res.push_back(tracks);
+        for (int i = start; i < nums.size(); i++) {
+            // 剪枝：如果当前元素与前一个元素相同，且前一个元素未被使用（在同一层），则跳过
+            if (i > start && nums[i] == nums[i-1]) {
+                continue;
+            }
+            tracks.push_back(nums[i]);
+            backtracks(res, tracks, nums, i + 1);
+            tracks.pop_back();
+        }
+        return;
+    }
+};
