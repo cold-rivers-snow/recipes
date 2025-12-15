@@ -134,3 +134,27 @@ int main(int argc, char** argv)
     vector<vector<int> > r = combine(n, k);
     printResult(r);
 }
+
+//hjx code
+//这个组合通过回溯法变量所有的组合可能性，然后把符合条件的组合加入结果集，start给定一个变量的开始位置，避免重复使用，也可以使用 used 数组标记，避免重复使用。
+class Solution {
+public:
+    vector<vector<int>> combine(int n, int k) {
+        vector<vector<int>> res;
+        vector<int> tracks;
+        backtracks(res, tracks, k, n, 1);
+        return res;
+    }
+    void backtracks(vector<vector<int>>& res, vector<int>& tracks, int k, int n, int start) {
+        if (tracks.size() == k) {
+            res.push_back(tracks);
+            return;
+        }
+        for (int i = start; i <=n; i++) {
+            tracks.push_back(i);
+            backtracks(res, tracks, k, n, i+1);
+            tracks.pop_back();
+        }
+        return;
+    }
+};
