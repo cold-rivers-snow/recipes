@@ -88,3 +88,38 @@ int main()
     return 0;
 }
 
+//hjx code
+//快慢指针，快的作为当前值，慢的作为前一个值，最好做一个虚拟头节点，容易处理边界
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* deleteDuplicates(ListNode* head) {
+        ListNode dump(0);
+        dump.next = head;
+        ListNode* fast = head;
+        ListNode* slow = &dump;
+
+        while(fast && fast->next) {
+            if (fast->val == fast->next->val) {
+                int val = fast->val;
+                while(fast && fast->val == val) {
+                    fast = fast->next;
+                }
+                slow->next = fast;
+            } else {
+                slow = fast;
+                fast = fast->next;
+            }
+        }
+        return dump.next;
+    }
+};

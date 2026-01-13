@@ -88,3 +88,25 @@ int main()
 
     return 0;
 }
+
+//hjx code
+//同 55 贪心算法，每次都跳最大的跳数。
+class Solution {
+public:
+    int jump(vector<int>& nums) {
+        int count = 0, fastJump = 0, curEnd = 0;
+        if (nums.size() == 1)
+            return 0;
+        for (int i = 0; i < nums.size(); i++) {
+            fastJump = max(fastJump, i + nums[i]);
+            if (i == curEnd) {
+                count++;
+                curEnd = fastJump;
+                if (curEnd >= nums.size()-1) {
+                    return count;
+                }
+            }
+        }
+        return count;
+    }
+};

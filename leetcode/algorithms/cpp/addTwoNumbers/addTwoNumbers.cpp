@@ -58,3 +58,41 @@ private:
         return x;
     }
 };
+
+//hjx code
+//就是两个链表指针前进，相加，同时处理进位问题，新链表生成，虚拟头节点等注意事项
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+        ListNode dumy(0);
+        ListNode* curdumy = &dumy;
+        int carry = 0;
+        while(l1 || l2 || carry != 0) {
+            int val1 = l1 ? l1->val : 0;
+            int val2 = l2 ? l2->val : 0;
+            int sum = val1 + val2 + carry;
+            int curval = sum % 10;
+            carry = sum / 10;
+            curdumy->next = new ListNode(curval);
+            curdumy = curdumy->next;
+
+            if (l1) {
+                l1 = l1->next;
+            }
+            if (l2) {
+                l2 = l2->next;
+            }
+        }
+        return dumy.next;
+    }
+};

@@ -39,3 +39,23 @@ public:
         return false;
     }
 };
+
+//hjx code
+//贪心算法，每次都选择能跳的最远的，只要最远的值大于当前下标，即可继续跳。
+class Solution {
+public:
+    bool canJump(vector<int>& nums) {
+        int n = nums.size();
+        int fastJamp = 0;
+        for (int i = 0; i < n; i++) {
+            if (fastJamp < i) {
+                return false;
+            }
+            fastJamp = max(fastJamp, i + nums[i]);
+            if (fastJamp >= n - 1) {
+                return true;
+            }
+        }
+        return true;
+    }
+};

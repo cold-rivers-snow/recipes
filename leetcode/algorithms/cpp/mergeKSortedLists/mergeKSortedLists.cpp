@@ -188,7 +188,7 @@ int main(int argc, char**argv)
 
 //hjx code
 
-//采用优先级队列，最小堆排序
+//采用优先级队列，最小堆排序，
 /**
  * Definition for singly-linked list.
  * struct ListNode {
@@ -223,5 +223,34 @@ public:
             cur = cur->next;
         }
         return head->next;
+    }
+};
+
+//使用分治思想，利用归并排序的思想，将k个链表分成两部分，分别合并，然后合并的结果再合并，直到只剩下一个链表。
+class Solution {
+public:
+    ListNode* mergeKLists(vector<ListNode*>& lists) {
+        if (lists.empty())
+            return nullptr;
+        if (lists.size() == 1)
+            return lists[0];
+        int mid = lists.size() / 2;
+        vector<ListNode*> left(lists.begin(), lists.begin() + mid);
+        vector<ListNode*> right(lists.begin() + mid, lists.end());
+        return mergeTwoLists(mergeKLists(left), mergeKLists(right));
+    }
+    
+    ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
+        if (!l1)
+            return l2;
+        if (!l2)
+            return l1;
+        if (l1->val < l2->val) {
+            l1->next = mergeTwoLists(l1->next, l2);
+            return l1;
+        } else {
+            l2->next = mergeTwoLists(l1, l2->next);
+            return l2;
+        }
     }
 };
