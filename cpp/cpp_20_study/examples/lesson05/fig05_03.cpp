@@ -17,10 +17,10 @@ int main() {
    int frequency5{0}; // count of 5s rolled
    int frequency6{0}; // count of 6s rolled
 
-   // summarize results of 60,000,000 rolls of a die
+   // summarize results of 60,000,000 rolls of a die，单引号可以对数字分组，不会改变原有含义
    for (int roll{1}; roll <= 60'000'000; ++roll) {
       // determine roll value 1-6 and increment appropriate counter
-      switch (const int face{randomDie(engine)}) {
+      switch (const int face{randomDie(engine)}) { //C++17 正式支持在 switch 的判断表达式中直接定义变量（部分编译器如 GCC/Clang 在 C++11 后也兼容此写法），相比传统 “先定义变量再写 switch” 更简洁 // 传统写法（等价效果）const int face = randomDie(engine); switch (face) { ... }
          case 1:          
             ++frequency1; // increment the 1s counter
             break;

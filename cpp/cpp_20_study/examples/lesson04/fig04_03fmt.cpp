@@ -15,7 +15,7 @@ int main() {
    cout << fmt::format("Sum is {}\n", total);
 } 
 
-
+//需要变量fmt库，并链接，g++ -std=c++20 -I ../libraries/fmt/include/ fig04_03.cpp -o fig04_03
 
 
 /**************************************************************************

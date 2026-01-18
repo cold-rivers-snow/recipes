@@ -1,6 +1,6 @@
 // fig04_03.cpp
 // Summing integers with the for statement; introducing text formatting.
-#include <format> 
+#include <format> //c++ 20的标准库头文件
 #include <iostream>
 using namespace std;
 
@@ -14,7 +14,8 @@ int main() {
 
    cout << format("Sum is {}\n", total);
 } 
-
+//clang++ -std=c++20 -stdlib=libc++ -fexpermental-library fig04_03.cpp -o fig04_03
+//g++ -std=c++20 fig04_03.cpp -o fig04_03
 
 
 
